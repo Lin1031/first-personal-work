@@ -54,7 +54,7 @@ def main():
     for i in range(len(items)):
         CountDict = {}
         word, count = items[i]
-        if count >= 25:
+        if count >= 50:
             CountDict["name"] = word
             CountDict["value"] = count
             CountList.append(CountDict)
