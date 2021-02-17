@@ -8,10 +8,26 @@ import json
 import jieba
 
 
+def getStopwords():  # 创建停用词列表
+    stopwords = [line.strip() for line in open('baidu_stopwords.txt', encoding='UTF-8').readlines()]
+    return stopwords
+
+
 def dealFile():
     txt = open("video.txt", "r", encoding='utf-8').read()
     words = jieba.lcut(txt)  # 使用搜索引擎模式对文本进行分词
     return words
+
+
+def moveStopwords(words, stopwords):  # 去停用词
+    out_list = []
+    for word in words:
+        if word in stopwords:
+            continue
+        else:
+            out_list.append(word)
+
+    return out_list
 
 
 def totol(words):  # 统计次数
@@ -30,14 +46,18 @@ def totol(words):  # 统计次数
 
 def main():
     CountList = []
+    stopwords = getStopwords()  # 创建停用词
     words = dealFile()  # 处理文本
-    items = totol(words)
+    depart = moveStopwords(words, stopwords)  # 去停用词
+    items = totol(depart)
+
     for i in range(len(items)):
         CountDict = {}
         word, count = items[i]
-        CountDict["name"] = word
-        CountDict["value"] = count
-        CountList.append(CountDict)
+        if count >= 25:
+            CountDict["name"] = word
+            CountDict["value"] = count
+            CountList.append(CountDict)
 
     saveFile(CountList)
 
