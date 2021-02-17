@@ -27,14 +27,22 @@
 			// 新建Image对象
 			var maskImage = new Image();
 			// 加载动画
-			myChart.showLoading({
-			            text: '数据正在努力加载...',
-			            textStyle: { fontSize : 30 , color: '#000000' },
-			            effectOption: {backgroundColor: 'rgba(0, 0, 0, 0)'}
-			        }); 
+			myChart.showLoading();
 			// 指定图表的配置项和数据
 			var option = {
 				tooltip: {},
+				//可视化的工具箱
+				toolbox: {
+					show: true,
+					right: '20%',
+					top: '15%',
+					 itemSize:26,
+					feature: {
+						//保存图片
+						saveAsImage: {
+						}
+					}
+				},
 				series: [{
 					type: 'wordCloud',
 					sizeRange: [10, 100],
