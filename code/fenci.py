@@ -45,6 +45,7 @@ def totol(words):  # 统计次数
 
 
 def main():
+    DataDict={}
     CountList = []
     stopwords = getStopwords()  # 创建停用词
     words = dealFile()  # 处理文本
@@ -59,7 +60,8 @@ def main():
             CountDict["value"] = count
             CountList.append(CountDict)
 
-    saveFile(CountList)
+    DataDict["data"]=CountList
+    saveFile(DataDict)
 
 
 def saveFile(list):
