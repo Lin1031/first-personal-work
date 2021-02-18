@@ -31,7 +31,17 @@
 			// 指定图表的配置项和数据
 			var option = {
 				tooltip: {},
-				
+				//可视化的工具箱
+				toolbox: {
+					show: true,
+					right: '20%',
+					top: '15%',
+					itemSize: 26,
+					feature: {
+						//保存图片
+						saveAsImage: {}
+					}
+				},
 				series: [{
 					type: 'wordCloud',
 					sizeRange: [10, 100],
