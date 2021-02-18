@@ -26,7 +26,8 @@
 			var myChart = echarts.init(document.getElementById('main'));
 			// 新建Image对象
 			var maskImage = new Image();
-			
+			// 加载动画
+			myChart.showLoading();
 			// 指定图表的配置项和数据
 			var option = {
 				tooltip: {},
